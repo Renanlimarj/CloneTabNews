@@ -18,8 +18,9 @@
             const result = await client.query (queryObject);
             return result;
         } 
-        catch (err) {
-             await client.end()
+        catch (error) {
+            console.error(error);
+             throw error;
             } 
         finally {
             await client.end();
