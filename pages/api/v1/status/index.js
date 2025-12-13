@@ -13,7 +13,7 @@ async function status(request, response) {
 
 const query = {
   text: 'select count(*)::int from pg_stat_activity where datname = $1',
-  values: [process.env.POSTGRES_DB],
+  values: [process.env.POSTGRES_DATABASE],
 }
   const databaseActiveConnectionsResult = await database.query(query);
   const databaseActiveConnectionsValue = databaseActiveConnectionsResult.rows[0].count;

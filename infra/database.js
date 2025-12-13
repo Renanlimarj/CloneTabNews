@@ -7,6 +7,10 @@
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DATABASE,
+            ssl: {
+                rejectUnauthorized: false,
+            }
+
         });
         //await client.connect();
         //const result =  await client.query (queryObject);
