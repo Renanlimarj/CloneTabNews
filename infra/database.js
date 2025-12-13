@@ -7,9 +7,7 @@
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DATABASE,
-            ssl: {
-                rejectUnauthorized: false,
-            }
+            ssl: process.env.NODE_ENV ==='development' ? true : true,
 
         });
         //await client.connect();
