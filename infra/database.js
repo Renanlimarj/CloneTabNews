@@ -8,10 +8,23 @@
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB,
         });
-        await client.connect();
-        const result =  await client.query (queryObject);
-        await client.end();
-        return result;
+        //await client.connect();
+        //const result =  await client.query (queryObject);
+        //await client.end();
+        //return result;
+
+        try { 
+            await client.connect();
+            const result = await client.query (queryObject);
+            return result;
+        } 
+        catch (err) {
+             await client.end()
+            } 
+        finally {
+            await client.end();
+        }    
+
 
     }
 
