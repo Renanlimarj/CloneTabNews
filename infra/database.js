@@ -6,12 +6,19 @@
             port: process.env.POSTGRES_PORT,
             user: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
-            database: process.env.POSTGRES_DB,
+            database: process.env.POSTGRES_DATABASE,
         });
         //await client.connect();
         //const result =  await client.query (queryObject);
         //await client.end();
         //return result;
+
+console.log("Credenciais de conexão:" + 
+            process.env.POSTGRES_HOST + 
+            process.env.POSTGRES_PORT + 
+            process.env.POSTGRES_USER + 
+            process.env.POSTGRES_PASSWORD + 
+            process.env.POSTGRES_DATABASE);
 
         try { 
             await client.connect();
