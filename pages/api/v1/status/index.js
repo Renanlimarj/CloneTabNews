@@ -5,7 +5,6 @@ async function status(request, response) {
 
   const databaseVersionResult = await database.query("show server_version;");
   const databaseVersionValue = databaseVersionResult.rows[0].server_version;
-  console.log(databaseVersionResult);
 
   const databaseMaxConnectionsResult = await database.query(
     "show max_connections;"
@@ -21,8 +20,12 @@ async function status(request, response) {
   const databaseActiveConnectionsValue =
     databaseActiveConnectionsResult.rows[0].count;
 
+  const nodeEnv = process.env.NODE_ENV;
+  console.log(nodeEnv);
+
   response.status(200).json({
     updated_At: updatedAt,
+    environment: nodeEnv,
     dependencies: {
       database: {
         version: databaseVersionValue,

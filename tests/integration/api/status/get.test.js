@@ -10,7 +10,11 @@ test("Get to /api/v1/status return 200", async () => {
 
   const databaseVersion = responseBody.dependencies.database.version.slice(0,4)
 
-  console.log(databaseVersion);
+  const nodeEnv = process.env.NODE_ENV;
+  console.log(nodeEnv);
+
+
+  expect(responseBody.environment).toBe(nodeEnv);
   expect(databaseVersion).toEqual("17.7");
   expect(responseBody.dependencies.database.max_connections).toEqual(450);
   expect(responseBody.dependencies.database.active_connections).toEqual(1);
