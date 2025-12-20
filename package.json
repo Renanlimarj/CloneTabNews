@@ -14,7 +14,7 @@
     "test:watch": "jest --watch --verbose --runInBand",
     "migration:create": "node-pg-migrate create --migrations-dir infra/migrations",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
-    "vercel-build": "npm run build && npm run migration:create"
+    "vercel-build": "npm run prepare && next build && run migration:create"
   },
   "author": "",
   "license": "MIT",
