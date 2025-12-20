@@ -13,7 +13,7 @@ test("Get to /api/v1/migrations return 200", async () => {
 
   const responseBody = await response.json();
   expect(Array.isArray(responseBody)).toBe(true);
-
+  console.log(responseBody)
 
 
   expect(responseBody.length).toBeGreaterThan(0);
