@@ -1,0 +1,143 @@
+[1mdiff --git a/.env.development b/.env.development[m
+[1mindex 662c24e..ea094d4 100644[m
+[1m--- a/.env.development[m
+[1m+++ b/.env.development[m
+[36m@@ -3,4 +3,4 @@[m [mPOSTGRES_PORT=5432[m
+ POSTGRES_USER=neondb_owner[m
+ POSTGRES_DATABASE=neondb[m
+ POSTGRES_PASSWORD=npg_zx3BoQSLu0RU[m
+[31m-DATABASE_URL=postgres://neondb_owner:npg_zx3BoQSLu0RU@ep-curly-mountain-achqq8ni-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require[m
+\ No newline at end of file[m
+[32m+[m[32mDATABASE_URL=postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DATABASE?sslmode=require[m
+\ No newline at end of file[m
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex c1d1076..8789ad3 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -10,6 +10,7 @@[m
+       "license": "MIT",[m
+       "dependencies": {[m
+         "dotenv": "^16.4.4",[m
+[32m+[m[32m        "dotenv-expand": "^11.0.6",[m
+         "next": "^13.1.6",[m
+         "node-pg-migrate": "^6.2.2",[m
+         "pg": "^8.11.3",[m
+[36m@@ -54,7 +55,6 @@[m
+       "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.28.5.tgz",[m
+       "integrity": "sha512-e7jT4DxYvIDLk1ZHmU/m/mB19rex9sv0c2ftBtjSBv+kVM/902eh0fINUzD7UwLLNR+jU585GxUJ8/EBfAM5fw==",[m
+       "dev": true,[m
+[31m-      "peer": true,[m
+       "dependencies": {[m
+         "@babel/code-frame": "^7.27.1",[m
+         "@babel/generator": "^7.28.5",[m
+[36m@@ -3048,7 +3048,6 @@[m
+         }[m
+       ],[m
+       "license": "MIT",[m
+[31m-      "peer": true,[m
+       "dependencies": {[m
+         "baseline-browser-mapping": "^2.8.25",[m
+         "caniuse-lite": "^1.0.30001754",[m
+[36m@@ -3483,6 +3482,20 @@[m
+         "url": "https://dotenvx.com"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/dotenv-expand": {[m
+[32m+[m[32m      "version": "11.0.6",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-11.0.6.tgz",[m
+[32m+[m[32m      "integrity": "sha512-8NHi73otpWsZGBSZwwknTXS5pqMOrk9+Ssrna8xCaxkzEpU9OTf9R5ArQGVw03//Zmk9MOwLPng9WwndvpAJ5g==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "dotenv": "^16.4.4"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=12"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "funding": {[m
+[32m+[m[32m        "url": "https://dotenvx.com"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/electron-to-chromium": {[m
+       "version": "1.5.262",[m
+       "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.262.tgz",[m
+[36m@@ -5182,7 +5195,6 @@[m
+       "resolved": "https://registry.npmjs.org/pg/-/pg-8.11.3.tgz",[m
+       "integrity": "sha512-+9iuvG8QfaaUrrph+kpF24cXkH1YOOUeArRNYIxq1viYHZagBxrTno7cecY1Fa44tJeZvaoG+Djpkc3JwehN5g==",[m
+       "license": "MIT",[m
+[31m-      "peer": true,[m
+       "dependencies": {[m
+         "buffer-writer": "2.0.0",[m
+         "packet-reader": "1.0.0",[m
+[36m@@ -5454,7 +5466,6 @@[m
+       "resolved": "https://registry.npmjs.org/react/-/react-18.2.0.tgz",[m
+       "integrity": "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==",[m
+       "license": "MIT",[m
+[31m-      "peer": true,[m
+       "dependencies": {[m
+         "loose-envify": "^1.1.0"[m
+       },[m
+[36m@@ -5467,7 +5478,6 @@[m
+       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz",[m
+       "integrity": "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==",[m
+       "license": "MIT",[m
+[31m-      "peer": true,[m
+       "dependencies": {[m
+         "loose-envify": "^1.1.0",[m
+         "scheduler": "^0.23.0"[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 611ecf5..f55c3a9 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -19,6 +19,7 @@[m
+   "license": "MIT",[m
+   "dependencies": {[m
+     "dotenv": "^16.4.4",[m
+[32m+[m[32m    "dotenv-expand": "^11.0.6",[m
+     "next": "^13.1.6",[m
+     "node-pg-migrate": "^6.2.2",[m
+     "pg": "^8.11.3",[m
+[1mdiff --git a/pages/api/v1/migrations/index.js b/pages/api/v1/migrations/index.js[m
+[1mindex becda33..c18f3a0 100644[m
+[1m--- a/pages/api/v1/migrations/index.js[m
+[1m+++ b/pages/api/v1/migrations/index.js[m
+[36m@@ -1,10 +1,12 @@[m
+ import migrationRunner from "node-pg-migrate";[m
+ import { join } from "path";[m
+[32m+[m[32mimport database from "infra/database.js"[m
+ [m
+ export default async function migrations(request, response) {[m
+   [m
+[32m+[m[32m  const dbClient = await database.getNewClient();[m
+   const defaultMigrationsOptions = {[m
+[31m-      databaseUrl: process.env.DATABASE_URL,[m
+[32m+[m[32m      dbClient: dbClient,[m
+       dryRun: true,[m
+       dir: join("infra", "migrations"),[m
+       direction: "up",[m
+[36m@@ -14,6 +16,7 @@[m [mexport default async function migrations(request, response) {[m
+   [m
+   if (request.method == "GET") {[m
+     const pendingMigrations = await migrationRunner(defaultMigrationsOptions);[m
+[32m+[m[32m    await dbClient.end();[m
+     return response.status(200).json(pendingMigrations);[m
+   }[m
+ [m
+[36m@@ -21,6 +24,7 @@[m [mexport default async function migrations(request, response) {[m
+     const migratedMigrations = await migrationRunner({[m
+       ...defaultMigrationsOptions,[m
+     dryRun: false});[m
+[32m+[m[32m    await dbClient.end();[m
+     return response.status(201).json(migratedMigrations);[m
+   }[m
+ [m
+[1mdiff --git a/tests/integration/api/migrations/get.test.js b/tests/integration/api/migrations/get.test.js[m
+[1mindex 698730d..4b11c8a 100644[m
+[1m--- a/tests/integration/api/migrations/get.test.js[m
+[1m+++ b/tests/integration/api/migrations/get.test.js[m
+[36m@@ -15,5 +15,6 @@[m [mtest("Get to /api/v1/migrations return 200", async () => {[m
+   expect(Array.isArray(responseBody)).toBe(true);[m
+ [m
+ [m
+[32m+[m
+   expect(responseBody.length).toBeGreaterThan(0);[m
+ });[m
+\ No newline at end of file[m
