@@ -4,6 +4,7 @@
   "description": "Inicio do projeto do curso.dev",
   "main": "index.js",
   "scripts": {
+    "build": "next build",
     "test": "jest --verbose --runInBand",
     "dev": "npm run services:up &&next dev",
     "services:up": "docker-compose -f infra/compose.yml up -d",
@@ -14,7 +15,7 @@
     "test:watch": "jest --watch --verbose --runInBand",
     "migration:create": "node-pg-migrate create --migrations-dir infra/migrations",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
-    "vercel-build": "npm run next build && run migration:create"
+    "vercel-build": "npm run build && run migration:create"
   },
   "author": "",
   "license": "MIT",
