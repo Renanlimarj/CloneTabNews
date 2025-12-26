@@ -5,16 +5,15 @@ async function cleanDatabase() {
   await database.query("drop schema public cascade; create schema public;");
 }
 
-
-
 test("Get to /api/v1/migrations return 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/migrations");
   expect(response.status).toBe(200);
 
   const responseBody = await response.json();
   expect(Array.isArray(responseBody)).toBe(true);
-  console.log(responseBody)
+  console.log(responseBody);
 
+  console.log(responseBody);
 
   expect(responseBody.length).toBeGreaterThan(0);
 });
